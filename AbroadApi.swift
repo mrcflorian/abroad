@@ -9,16 +9,16 @@
 import NucleusFramework
 
 class AbroadAPI: NSObject {
-    class func requestLikes(userID: String, completionHandler: ((Array<AbroadSong>) -> Void)?)
+    class func requestLikes(userID: String, completionHandler: ((Array<AbroadPost>) -> Void)?)
     {
         let params = ["user_id":userID]
         let request = NLFNucleusAPIRequest(params:params, path:"likes.php")
         NLFNucleusAPI.request(request) {(data, response, error) in
             if completionHandler != nil {
-                var songsList = Array<AbroadSong>()
+                var songsList = Array<AbroadPost>()
                 var likesArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! Array<NSDictionary>
                 for jsonDictionary in likesArray {
-                    songsList.append(AbroadSong(jsonDictionary: jsonDictionary))
+                    songsList.append(AbroadPost(jsonDictionary: jsonDictionary))
                 }
                 completionHandler!(songsList)
             }
@@ -31,7 +31,7 @@ class AbroadAPI: NSObject {
         let request = NLFNucleusAPIRequest(params:params, path:"user.php")
         NLFNucleusAPI.request(request) {(data, response, error) in
             if (completionHandler != nil) {
-                var songsList = Array<AbroadSong>()
+                var songsList = Array<AbroadPost>()
                 var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary
                 if (jsonDictionary != nil) {
                     completionHandler!(AbroadUser(jsonDictionary: jsonDictionary!))

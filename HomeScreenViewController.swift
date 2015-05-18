@@ -9,6 +9,8 @@
 import NucleusFramework
 
 class HomeScreenViewController: NLFNucleusViewController {
+    
+    var newsFeedVC: AbroadTableViewController?
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,13 +26,16 @@ class HomeScreenViewController: NLFNucleusViewController {
     func didFetchFacebookUser(notification: NSNotification)
     {
         AbroadAPI.requestUser(notification.object as! String, completionHandler: { (user) -> Void in
-            AbroadAPI.requestLikes(user.userID, completionHandler: { (songsList) -> Void in
+            AbroadAPI.requestLikes(user.userID, completionHandler: { (postsList) -> Void in
+                self.newsFeedVC?.objectsArray = postsList
+                self.newsFeedVC?.tableView.reloadData()
             })
         })
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "") {
+        if (segue.identifier == "newsFeedVCSegue") {
+            newsFeedVC = segue.destinationViewController as? AbroadTableViewController
         }
     }
 }

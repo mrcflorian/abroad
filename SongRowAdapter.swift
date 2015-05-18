@@ -12,10 +12,10 @@ class SongRowAdapter: NLFTableRowAdapterProtocol
 {
     var x: Int = 10
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
-        if !object.isKindOfClass(AbroadSong) {
+        if !object.isKindOfClass(AbroadPost) {
             return UITableViewCell()
         }
-        let abroadSong = object as! AbroadSong
+        let abroadSong = object as! AbroadPost
         let reuseIdentifier = "abroad.song.cell.identifier"
         
         var cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! AbroadSongCell?
@@ -23,9 +23,9 @@ class SongRowAdapter: NLFTableRowAdapterProtocol
             cell = AbroadSongCell(reuseIdentifier: reuseIdentifier)
         }
         dispatch_async(dispatch_get_main_queue()) {
-            cell?.songTextView?.text = abroadSong.title
-            cell?.songTextView?.sizeToFit()
-            cell?.songImageView?.URLString = abroadSong.photoURL
+            cell?.songTextView.text = abroadSong.title
+            cell?.songTextView.sizeToFit()
+            cell?.songImageView.URLString = abroadSong.photoURL
         }
         return cell!
     }

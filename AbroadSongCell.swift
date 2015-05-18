@@ -11,24 +11,27 @@ let kSongImageCornerRadius: CGFloat = 4.0
 
 class AbroadSongCell: UITableViewCell
 {
-    @IBOutlet var songImageView: NLFDownloadableImageView!
-    @IBOutlet var songTextView: UITextView!
+    var songImageView = NLFDownloadableImageView()
+    var songTextView = UITextView()
 
     init(reuseIdentifier: String)
     {
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
+        self.songImageView.clipsToBounds = true
+        self.songImageView.layer.cornerRadius = kSongImageCornerRadius
+        
+        self.addSubview(self.songImageView)
+        self.addSubview(self.songTextView)
     }
 
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
     }
-    
-    override func awakeFromNib()
-    {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.songImageView?.clipsToBounds = true
-            self.songImageView?.layer.cornerRadius = kSongImageCornerRadius
-        }
+
+    override func layoutSubviews() {
+        let frame = self.bounds
+        self.songImageView.frame = CGRectMake(frame.origin.x, frame.origin.y, 30, 30)
+        self.songTextView.frame = CGRectMake(frame.origin.x + 35, frame.origin.y, 150, 30)
     }
 }

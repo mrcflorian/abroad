@@ -1,12 +1,12 @@
 //
-//  AbroadSong.swift
+//  AbroadPost.swift
 //  Abroad
 //
 //  Created by Florian Marcu on 4/11/15.
 //  Copyright (c) 2015 Florian Marcu. All rights reserved.
 //
 
-class AbroadSong: NSObject
+class AbroadPost: NSObject
 {
     var songID: String
     var photoURL: String
