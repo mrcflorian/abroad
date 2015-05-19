@@ -32,16 +32,16 @@
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="bas-jE-AHu" secondAttribute="bottom" id="cCK-aA-jXc"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="454" y="-428"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nucleus Navigation Controller-->
         <scene sceneID="YoV-ml-AmH">
             <objects>
-                <navigationController id="MlS-q9-Qj2" sceneMemberID="viewController">
+                <navigationController id="MlS-q9-Qj2" customClass="NLFNucleusNavigationController" customModule="NucleusFramework" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D94-9d-5l7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -58,7 +58,7 @@
             </objects>
             <point key="canvasLocation" x="-570" y="1224"/>
         </scene>
-        <!--Second-->
+        <!--Messages-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,11 +92,30 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="messages" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="338" y="564"/>
+        </scene>
+        <!--Me-->
+        <scene sceneID="b3D-Wk-1np">
+            <objects>
+                <viewController id="d4O-nh-qIC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="svv-wn-ra2"/>
+                        <viewControllerLayoutGuide type="bottom" id="ywm-aC-QEJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0FM-Ig-exC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Me" image="me" id="FRq-8w-qLU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAF-85-1Tx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="1414"/>
         </scene>
         <!--Home-->
         <scene sceneID="yl2-sM-qoP">
@@ -112,6 +131,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="d4O-nh-qIC" kind="relationship" relationship="viewControllers" id="7NL-vv-WfZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -143,7 +163,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="home" width="60" height="60"/>
+        <image name="me" width="60" height="60"/>
+        <image name="messages" width="60" height="60"/>
     </resources>
 </document>
