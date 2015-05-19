@@ -10,8 +10,8 @@ import NucleusFramework
 
 class AbroadTableViewController: NLFNucleusTableViewController {
 
-    var objectsArray: Array<AbroadPost>?
-    var userRowAdapter = AbroadPostRowAdapter()
+    var objectsArray: Array<AnyObject>?
+    var userRowAdapter = AbroadUserRowAdapter()
     var postRowAdapter = AbroadPostRowAdapter()
 
     required init(coder aDecoder: NSCoder) {
@@ -40,5 +40,4 @@ class AbroadTableViewController: NLFNucleusTableViewController {
         }
         return objectsArray!
     }
-
 }

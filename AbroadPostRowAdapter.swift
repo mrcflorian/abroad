@@ -10,7 +10,6 @@ import NucleusFramework
 
 class AbroadPostRowAdapter: NLFTableRowAdapterProtocol
 {
-    var x: Int = 10
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
         if !object.isKindOfClass(AbroadPost) {
             return UITableViewCell()

@@ -34,6 +34,11 @@ class AbroadUser: NSObject {
         }
     }
     
+    func fullName() -> String
+    {
+        return firstName + " " + lastName
+    }
+
     class func abroadID(facebookID: String!) -> String
     {
         var repeatNo = 15 - count(facebookID)
