@@ -11,17 +11,14 @@ import NucleusFramework
 class AbroadTableViewController: NLFNucleusTableViewController {
 
     var objectsArray: Array<AbroadPost>?
-    var userRowAdapter = SongRowAdapter()
-    var postRowAdapter = SongRowAdapter()
+    var userRowAdapter = AbroadPostRowAdapter()
+    var postRowAdapter = AbroadPostRowAdapter()
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.use(userRowAdapter, classRef: AbroadUser.self)
         self.use(postRowAdapter, classRef: AbroadPost.self)
-    }
-    
-    override func viewDidLoad() {
-        self.view.backgroundColor = UIColor.redColor()
+        self.tableView.separatorColor = UIColor.clearColor()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
