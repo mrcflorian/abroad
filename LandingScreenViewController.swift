@@ -15,6 +15,7 @@ class LandingScreenViewController: NLFNucleusViewController
 
     private let locationManager = NLFNucleusLocationManager(distanceFilter: 1000)
     private var initialViewController: UIViewController?
+    private var currentUser: AbroadUser?
 
     deinit
     {
@@ -66,12 +67,13 @@ class LandingScreenViewController: NLFNucleusViewController
     {
         self.goToHomeScreen()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateUserLocation:", name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)
-        locationManager.startUpdatingLocation()
 
         AbroadAPI.requestUser(notification.object as! String, completionHandler: { (user) -> Void in
             let tabBarController = self.initialViewController!.childViewControllers.first as! AbroadTabBarController
             let homeViewController = tabBarController.childViewControllers.first as! HomeScreenViewController
+            self.currentUser = user
             homeViewController.user = user
+            self.locationManager.startUpdatingLocation()
         })
     }
 
@@ -79,9 +81,9 @@ class LandingScreenViewController: NLFNucleusViewController
     {
         if (notification.userInfo != nil) {
             let userInfo = notification.userInfo as! Dictionary<String, String>
-            dispatch_async(dispatch_get_main_queue()) {
-                // TODO: Send the coordinates to the server
-            }
+            // TODO: Send the coordinates to the server
+            self.currentUser?.longitude = userInfo["longitude"]
+            self.currentUser?.latitude = userInfo["latitude"]
             NSNotificationCenter.defaultCenter().removeObserver(self, name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)
         }
     }
