@@ -12,6 +12,8 @@ class AbroadUser: NSObject {
     var firstName: String = ""
     var lastName: String = ""
     var email: String = ""
+    var longitude: String?
+    var latitude: String?
     
     init(facebookID: String)
     {

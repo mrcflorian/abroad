@@ -10,7 +10,7 @@ let kFacebookManagerDidFetchUserNotification = "kFacebookManagerDidFetchUserNoti
 let kFacebookManagerPermissions: [AnyObject] = ["email", "public_profile", "user_friends", "user_location"]
 
 class FacebookAPIManager: NSObject {
-    class func startFetchingDataForCurrentUser()
+    class func fetchDataForCurrentUser()
     {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in

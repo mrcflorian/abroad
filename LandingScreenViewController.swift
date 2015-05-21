@@ -13,6 +13,15 @@ class LandingScreenViewController: NLFNucleusViewController
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet var facebookLoginButton: UIButton!
 
+    private let locationManager = NLFNucleusLocationManager(distanceFilter: 1000)
+    private var initialViewController: UIViewController?
+
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kFacebookManagerDidFetchUserNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)
+    }
+
     @IBAction func didTapLoginButton(sender: UIButton) {
         FBSDKLoginManager().logInWithReadPermissions(kFacebookManagerPermissions, handler: handleFacebookLoginResponse)
         facebookLoginButton.hidden = true
@@ -34,24 +43,49 @@ class LandingScreenViewController: NLFNucleusViewController
     {
         self.prepareForRetry()
     }
-    
+
     func handleFacebookLoginCancellation(result: FBSDKLoginManagerLoginResult!)
     {
         self.prepareForRetry()
     }
-    
+
     func handleFacebookLoginSuccess(result: FBSDKLoginManagerLoginResult!)
     {
-        self.goToHomeScreen();
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didFetchFacebookUser:", name: kFacebookManagerDidFetchUserNotification, object: nil)
+        FacebookAPIManager.fetchDataForCurrentUser()
     }
-    
+
     func goToHomeScreen()
     {
         let storyboard = UIStoryboard(name:"AbroadMain", bundle:nil)
-        let viewController = storyboard.instantiateInitialViewController() as! UIViewController
-        self.presentViewController(viewController, animated:true, completion:nil)
+        initialViewController = storyboard.instantiateInitialViewController() as? UIViewController
+        self.presentViewController(initialViewController!, animated:true, completion:nil)
     }
-    
+
+    func didFetchFacebookUser(notification: NSNotification)
+    {
+        self.goToHomeScreen()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateUserLocation:", name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)
+        locationManager.startUpdatingLocation()
+
+        AbroadAPI.requestUser(notification.object as! String, completionHandler: { (user) -> Void in
+            let tabBarController = self.initialViewController!.childViewControllers.first as! AbroadTabBarController
+            let homeViewController = tabBarController.childViewControllers.first as! HomeScreenViewController
+            homeViewController.user = user
+        })
+    }
+
+    func didUpdateUserLocation(notification: NSNotification)
+    {
+        if (notification.userInfo != nil) {
+            let userInfo = notification.userInfo as! Dictionary<String, String>
+            dispatch_async(dispatch_get_main_queue()) {
+                // TODO: Send the coordinates to the server
+            }
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)
+        }
+    }
+
     func prepareForRetry()
     {
         facebookLoginButton.hidden = false
