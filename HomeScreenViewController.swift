@@ -14,10 +14,7 @@ class HomeScreenViewController: NLFNucleusViewController {
     var user: AbroadUser? {
         didSet {
             if (user != nil) {
-                AbroadAPI.requestLikes(user!.userID, completionHandler: { (postsList) -> Void in
-                    self.newsFeedVC?.objectsArray = postsList
-                    self.newsFeedVC?.tableView.reloadData()
-                })
+                self.newsFeedVC?.stream = AbroadAPI.createNewsFeedStream(user!)
             }
         }
     }

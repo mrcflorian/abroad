@@ -39,4 +39,10 @@ class AbroadAPI: NSObject {
             }
         }
     }
+
+    class func createNewsFeedStream(user: AbroadUser) -> NLFNucleusStream
+    {
+        let request = NLFNucleusAPIRequest(params:["user_id":user.userID], path:"likes.php")
+        return NLFNucleusStream(apiRequest: request, jsonDecoder: AbroadPostJSONDecoder())
+    }
 }

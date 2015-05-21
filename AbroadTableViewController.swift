@@ -8,9 +8,8 @@
 
 import NucleusFramework
 
-class AbroadTableViewController: NLFNucleusTableViewController {
-
-    var objectsArray: Array<AnyObject>?
+class AbroadTableViewController: NLFNucleusStreamifiedTableViewController
+{
     var userRowAdapter = AbroadUserRowAdapter()
     var postRowAdapter = AbroadPostRowAdapter()
 
@@ -19,25 +18,5 @@ class AbroadTableViewController: NLFNucleusTableViewController {
         self.use(userRowAdapter, classRef: AbroadUser.self)
         self.use(postRowAdapter, classRef: AbroadPost.self)
         self.tableView.separatorColor = UIColor.clearColor()
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        if (objectsArray != nil) {
-            return objectsArray!.count
-        }
-        return 0
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
-    override func objects() -> [AnyObject] {
-        if (objectsArray == nil) {
-            return []
-        }
-        return objectsArray!
     }
 }

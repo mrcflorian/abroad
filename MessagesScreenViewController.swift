@@ -24,7 +24,7 @@ class MessagesScreenViewController: NLFNucleusViewController {
     func mockData()
     {
         AbroadAPI.requestUser("florian.mrc@gmail.com", completionHandler: { (user) -> Void in
-            self.messagesVC?.objectsArray = [user, user, user, user, user]
+            //self.messagesVC?.objectsArray = [user, user, user, user, user]
             self.messagesVC?.tableView.reloadData()
         })
     }
