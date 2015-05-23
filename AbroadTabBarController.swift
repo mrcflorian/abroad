@@ -7,10 +7,36 @@
 //
 
 import NucleusFramework
+import UIKit
 
 class AbroadTabBarController: UITabBarController {
-    
+
+    @IBOutlet var addPostButton: UIBarButtonItem!
+
+    lazy var addStatusCellsArray = [NLFNucleusTextFieldFormCell(reuseIdentifier: "abroad.cell.textfield", placeHolderText: "What's on your mind")]
+
+    @IBAction func addPostButtonDidTap(sender: UIBarButtonItem) {
+        self.presentAddPostViewController()
+    }
+
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
         self.navigationItem.title = item.title!
+    }
+
+    func presentAddPostViewController() {
+        let addStatusVC = NLFNucleusFormTableViewController(formCells: self.addStatusCellsArray)
+        let navigationController = NLFNucleusNavigationController(rootViewController:addStatusVC)
+
+        addStatusVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.Plain, target: self, action: "didTapPostButton:")
+        addStatusVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: navigationController, action: "didTapCancelButton:")
+        addStatusVC.navigationItem.title = "Update Status"
+
+        self.navigationController?.presentViewController(navigationController, animated: true, completion: {
+            self.addStatusCellsArray.first?.becomeFirstResponder()
+        })
+    }
+
+    func didTapPostButton(sender: AnyObject) {
+
     }
 }

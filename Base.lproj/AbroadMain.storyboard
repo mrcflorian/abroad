@@ -114,7 +114,14 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" customClass="AbroadTabBarController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Home" id="CzD-LX-fqv"/>
+                    <navigationItem key="navigationItem" title="Home" id="CzD-LX-fqv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="xAm-F2-9Ah">
+                            <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <connections>
+                                <action selector="addPostButtonDidTap:" destination="49e-Tb-3d3" id="iix-P5-VxH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -122,6 +129,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="addPostButton" destination="xAm-F2-9Ah" id="qjT-ep-qgk"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="d4O-nh-qIC" kind="relationship" relationship="viewControllers" id="7NL-vv-WfZ"/>
