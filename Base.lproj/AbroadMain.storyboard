@@ -110,6 +110,14 @@
             </objects>
             <point key="canvasLocation" x="364" y="1414"/>
         </scene>
+        <!--Abroad Status Details View Controller-->
+        <scene sceneID="AqT-ED-JAj">
+            <objects>
+                <viewController id="nhW-kN-iwr" customClass="AbroadStatusDetailsViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nV9-V5-IqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-976" y="-530"/>
+        </scene>
         <!--Home-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -144,6 +152,9 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Y5i-s6-4O0" customClass="AbroadTableViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <connections>
+                        <segue destination="nhW-kN-iwr" kind="show" identifier="showStatusDetailsVCSegue" id="4l3-is-NGq"/>
+                    </connections>
                 </viewController>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="s8U-p2-h8a">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
