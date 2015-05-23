@@ -73,6 +73,7 @@ class LandingScreenViewController: NLFNucleusViewController
             let homeViewController = tabBarController.childViewControllers.first as! HomeScreenViewController
             self.currentUser = user
             homeViewController.user = user
+            tabBarController.user = user
             self.locationManager.startUpdatingLocation()
         })
     }

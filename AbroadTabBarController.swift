@@ -12,7 +12,8 @@ import UIKit
 class AbroadTabBarController: UITabBarController {
 
     @IBOutlet var addPostButton: UIBarButtonItem!
-
+    var user: AbroadUser?
+    var addStatusNavigationController: NLFNucleusNavigationController?
     lazy var addStatusCellsArray = [NLFNucleusTextFieldFormCell(reuseIdentifier: "abroad.cell.textfield", placeHolderText: "What's on your mind")]
 
     @IBAction func addPostButtonDidTap(sender: UIBarButtonItem) {
@@ -25,18 +26,25 @@ class AbroadTabBarController: UITabBarController {
 
     func presentAddPostViewController() {
         let addStatusVC = NLFNucleusFormTableViewController(formCells: self.addStatusCellsArray)
-        let navigationController = NLFNucleusNavigationController(rootViewController:addStatusVC)
+        addStatusNavigationController = NLFNucleusNavigationController(rootViewController:addStatusVC)
 
         addStatusVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Post", style: UIBarButtonItemStyle.Plain, target: self, action: "didTapPostButton:")
-        addStatusVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: navigationController, action: "didTapCancelButton:")
+        addStatusVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: addStatusNavigationController, action: "didTapCancelButton:")
         addStatusVC.navigationItem.title = "Update Status"
 
-        self.navigationController?.presentViewController(navigationController, animated: true, completion: {
+        self.navigationController?.presentViewController(self.addStatusNavigationController!, animated: true, completion: {
             self.addStatusCellsArray.first?.becomeFirstResponder()
         })
     }
 
     func didTapPostButton(sender: AnyObject) {
+        let statusText = self.addStatusCellsArray.first?.textValue()
 
+        if (statusText != nil && count(statusText!) > 0 && self.user != nil) {
+            AbroadAPI.addStatus(self.user!.userID, textValue: statusText!, completionHandler: { (status) -> Void in
+
+            })
+        }
+        self.addStatusNavigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }

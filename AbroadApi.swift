@@ -45,4 +45,16 @@ class AbroadAPI: NSObject {
         let request = NLFNucleusAPIRequest(params:["user_id":user.userID], path:"likes.php")
         return NLFNucleusStream(apiRequest: request, jsonDecoder: AbroadPostJSONDecoder())
     }
+
+    class func addStatus(userID: String, textValue: String, completionHandler: ((AbroadPost) -> Void)?) {
+        let params = ["user_id":userID, "status":textValue]
+        let request = NLFNucleusAPIRequest(params:params, path:"addStatus.php")
+        NLFNucleusAPI.request(request) {(data, response, error) in
+            if completionHandler != nil {
+                var abroadPost = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! AbroadPost
+                completionHandler!(abroadPost)
+            }
+        }
+    }
+
 }
