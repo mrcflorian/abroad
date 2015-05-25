@@ -63,4 +63,13 @@ class AbroadAPI: NSObject {
         }
     }
 
+    class func like(userID: String, statusID: String, completionHandler: (() -> Void)?) {
+        let params = ["user_id":userID, "status_id":statusID]
+        let request = NLFNucleusAPIRequest(params:params, path:"like.php")
+        NLFNucleusAPI.request(request) {(data, response, error) in
+            if completionHandler != nil {
+                completionHandler!()
+            }
+        }
+    }
 }

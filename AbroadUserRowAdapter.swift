@@ -10,7 +10,7 @@ import NucleusFramework
 
 class AbroadUserRowAdapter: NLFTableRowAdapterProtocol {
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
+    func tableView(tableView: UITableView, controller: UITableViewController, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
         let abroadUser = object as! AbroadUser
         let reuseIdentifier = "abroad.user.cell.identifier"
 
@@ -26,7 +26,7 @@ class AbroadUserRowAdapter: NLFTableRowAdapterProtocol {
         return cell!
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> CGFloat {
+    func tableView(tableView: UITableView, controller: UITableViewController, heightForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> CGFloat {
         return AbroadUserCell.height()
     }
 

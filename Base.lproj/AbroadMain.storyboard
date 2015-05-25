@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="364" y="1414"/>
         </scene>
-        <!--Abroad Status Details View Controller-->
+        <!--Abroad Status View Controller-->
         <scene sceneID="AqT-ED-JAj">
             <objects>
-                <viewController id="nhW-kN-iwr" customClass="AbroadStatusDetailsViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController id="nhW-kN-iwr" customClass="AbroadStatusViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nV9-V5-IqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-976" y="-530"/>

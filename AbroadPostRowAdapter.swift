@@ -10,7 +10,7 @@ import NucleusFramework
 
 class AbroadPostRowAdapter: NLFTableRowAdapterProtocol
 {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
+    func tableView(tableView: UITableView, controller: UITableViewController, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
         if !object.isKindOfClass(AbroadPost) {
             return UITableViewCell()
         }
@@ -29,7 +29,7 @@ class AbroadPostRowAdapter: NLFTableRowAdapterProtocol
         return cell!
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> CGFloat {
+    func tableView(tableView: UITableView, controller: UITableViewController, heightForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> CGFloat {
         return AbroadPostCell.height()
     }
 }

@@ -23,11 +23,22 @@ class AbroadStatusDetailsViewController: NLFNucleusTableViewController
         super.init(coder: aDecoder)
         self.use(detailedStatusRowAdapter, classRef: AbroadDetailedStatus.self)
         self.tableView.separatorColor = UIColor.clearColor()
+        self.tableView.bounces = false
     }
 
     func setup() {
         if (abroadDetailedStatus != nil) {
             self.addItem(abroadDetailedStatus!)
+        }
+    }
+
+    func contentHeight() -> CGFloat {
+        return self.tableView.contentSize.height
+    }
+
+
+    func didTapLikeButton(sender: UIButton) {
+        AbroadAPI.like(abroadDetailedStatus!.abroadUser.userID, statusID: abroadDetailedStatus!.abroadStatus.statusID) {
         }
     }
 }

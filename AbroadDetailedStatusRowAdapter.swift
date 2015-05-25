@@ -10,7 +10,7 @@ import NucleusFramework
 
 class AbroadDetailedStatusRowAdapter: NLFTableRowAdapterProtocol
 {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
+    func tableView(tableView: UITableView, controller: UITableViewController, cellForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> UITableViewCell {
         let abroadDetailedStatus = object as! AbroadDetailedStatus
         let reuseIdentifier = "abroad.detailed.status.cell.identifier"
 
@@ -21,14 +21,13 @@ class AbroadDetailedStatusRowAdapter: NLFTableRowAdapterProtocol
         dispatch_async(dispatch_get_main_queue()) {
             cell?.statusTextView.text = abroadDetailedStatus.abroadStatus.title
             cell?.statusTextView.sizeToFit()
-            if (abroadDetailedStatus.abroadUser != nil) {
-                cell?.authorImageView.URLString = abroadDetailedStatus.abroadUser!.profileImageURL
-            }
+            cell?.authorImageView.URLString = abroadDetailedStatus.abroadUser.profileImageURL
+            cell?.likeButton.addTarget(controller, action: "didTapLikeButton:", forControlEvents: .TouchUpInside)
         }
         return cell!
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> CGFloat {
+    func tableView(tableView: UITableView, controller: UITableViewController, heightForRowAtIndexPath indexPath: NSIndexPath, object: AnyObject) -> CGFloat {
         return AbroadDetailedStatusCell.height()
     }
 }

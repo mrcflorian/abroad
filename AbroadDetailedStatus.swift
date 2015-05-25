@@ -8,10 +8,10 @@
 
 class AbroadDetailedStatus: NSObject
 {
-    var abroadUser: AbroadUser?
+    var abroadUser: AbroadUser
     var abroadStatus: AbroadPost
 
-    init(abroadUser: AbroadUser?, abroadStatus: AbroadPost) {
+    init(abroadUser: AbroadUser, abroadStatus: AbroadPost) {
         self.abroadUser = abroadUser
         self.abroadStatus = abroadStatus
         super.init()

@@ -8,7 +8,7 @@
 
 class AbroadPost: NSObject
 {
-    var songID: String
+    var statusID: String
     var photoURL: String
     var title: String
     var content: String
@@ -17,7 +17,7 @@ class AbroadPost: NSObject
 
     init(jsonDictionary: NSDictionary)
     {
-        songID = jsonDictionary["hkid"] as! String
+        statusID = jsonDictionary["hkid"] as! String
         photoURL = jsonDictionary["photo"] as! String
         title = jsonDictionary["title"] as! String
         content = jsonDictionary["content"] as! String
