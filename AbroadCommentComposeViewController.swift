@@ -9,7 +9,9 @@
 import NucleusFramework
 
 class AbroadCommentComposeViewController: NLFNucleusFormTableViewController {
+
     func contentHeight() -> CGFloat {
         return self.tableView.contentSize.height
     }
+
 }
