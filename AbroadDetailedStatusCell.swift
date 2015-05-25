@@ -13,21 +13,21 @@ let kDetailedStatusImageSize: CGSize = CGSize(width: 70, height: 70)
 
 let kDetailedStatusVerticalPadding: CGFloat = 5.0
 let kDetailedStatusHorizontalPadding: CGFloat = 10.0
-let kLikeButtonHeight: CGFloat = 40.0
+//let kLikeButtonHeight: CGFloat = 40.0
 let kActionsContainerBackgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
 
 class AbroadDetailedStatusCell: UITableViewCell
 {
     var statusDetailsContainer = UIView()
-    var activitySummaryContainer = UIView()
-    var actionsContainer = UIView()
+    //var activitySummaryContainer = UIView()
+    //var actionsContainer = UIView()
 
     var authorImageView = NLFDownloadableImageView()
     var statusTextView = UITextView()
 
-    var likersButton = UIButton()
+    //var likersButton = UIButton()
 
-    var likeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    //var likeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
 
     init(reuseIdentifier: String) {
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: reuseIdentifier)
@@ -45,20 +45,20 @@ class AbroadDetailedStatusCell: UITableViewCell
         self.statusTextView.font = UIFont.systemFontOfSize(16)
 
         self.addSubview(statusDetailsContainer)
-        self.addSubview(activitySummaryContainer)
-        self.addSubview(actionsContainer)
+        //self.addSubview(activitySummaryContainer)
+        //self.addSubview(actionsContainer)
 
         self.statusDetailsContainer.addSubview(self.authorImageView)
         self.statusDetailsContainer.addSubview(self.statusTextView)
 
 
-        self.activitySummaryContainer.addSubview(self.likersButton)
+        //self.activitySummaryContainer.addSubview(self.likersButton)
 
-        self.likeButton.setTitle("Like", forState: .Normal)
+        //self.likeButton.setTitle("Like", forState: .Normal)
 
-        self.actionsContainer.backgroundColor = kActionsContainerBackgroundColor
+        //self.actionsContainer.backgroundColor = kActionsContainerBackgroundColor
 
-        self.actionsContainer.addSubview(self.likeButton)
+        //self.actionsContainer.addSubview(self.likeButton)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -76,16 +76,16 @@ class AbroadDetailedStatusCell: UITableViewCell
         let width: CGFloat = frame.width - 3 * kDetailedStatusHorizontalPadding - kDetailedStatusImageSize.width
         self.statusTextView.frame = CGRectMake(frame.origin.x + kDetailedStatusImageSize.width + 2 * kDetailedStatusHorizontalPadding, frame.origin.y + kDetailedStatusVerticalPadding, width, kDetailedStatusImageSize.height)
 
-        offsetY += kDetailedStatusImageSize.height + 2 * kDetailedStatusVerticalPadding
+        //offsetY += kDetailedStatusImageSize.height + 2 * kDetailedStatusVerticalPadding
 
-        self.actionsContainer.frame = CGRectMake(frame.origin.x, offsetY, frame.width, 2 * kDetailedStatusVerticalPadding + kLikeButtonHeight)
-        self.likeButton.frame = CGRectMake(self.actionsContainer.frame.width - self.likeButton.sizeThatFits(self.actionsContainer.frame.size).width - kDetailedStatusHorizontalPadding, kDetailedStatusVerticalPadding, self.likeButton.sizeThatFits(self.actionsContainer.frame.size).width, kLikeButtonHeight)
+        //self.actionsContainer.frame = CGRectMake(frame.origin.x, offsetY, frame.width, 2 * kDetailedStatusVerticalPadding + kLikeButtonHeight)
+        //self.likeButton.frame = CGRectMake(self.actionsContainer.frame.width - self.likeButton.sizeThatFits(self.actionsContainer.frame.size).width - kDetailedStatusHorizontalPadding, kDetailedStatusVerticalPadding, self.likeButton.sizeThatFits(self.actionsContainer.frame.size).width, kLikeButtonHeight)
 
-        offsetY += kLikeButtonHeight + 2 * kDetailedStatusVerticalPadding
+        //offsetY += kLikeButtonHeight + 2 * kDetailedStatusVerticalPadding
     }
 
     class func height() -> CGFloat {
-        return 4 * kDetailedStatusVerticalPadding + kDetailedStatusImageSize.height + kLikeButtonHeight
+        return 2 * kDetailedStatusVerticalPadding + kDetailedStatusImageSize.height
     }
 
 }

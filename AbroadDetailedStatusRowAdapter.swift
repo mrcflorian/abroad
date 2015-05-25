@@ -22,7 +22,7 @@ class AbroadDetailedStatusRowAdapter: NLFTableRowAdapterProtocol
             cell?.statusTextView.text = abroadDetailedStatus.abroadStatus.title
             cell?.statusTextView.sizeToFit()
             cell?.authorImageView.URLString = abroadDetailedStatus.abroadUser.profileImageURL
-            cell?.likeButton.addTarget(controller, action: "didTapLikeButton:", forControlEvents: .TouchUpInside)
+            //cell?.likeButton.addTarget(controller, action: "didTapLikeButton:", forControlEvents: .TouchUpInside)
         }
         return cell!
     }
