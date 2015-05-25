@@ -20,5 +20,10 @@ class AbroadCommentTableViewController: NLFNucleusStreamifiedTableViewController
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.use(commentRowAdapter, classRef: AbroadComment.self)
+        self.automaticallyAdjustsScrollViewInsets = false
+    }
+
+    override func didMoveToParentViewController(parent: UIViewController?) {
+        self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
     }
 }

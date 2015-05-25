@@ -13,6 +13,7 @@ import UIKit
 
 let kCommentComposerBorderWidth: CGFloat = 1.0
 let kCommentComposerBorderColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+let kStatusDetailsVerticalSpacing: CGFloat = 20.0
 
 class AbroadStatusViewController: NLFNucleusViewController {
 
@@ -21,7 +22,9 @@ class AbroadStatusViewController: NLFNucleusViewController {
     var abroadCommentComposeVC: AbroadCommentComposeViewController
 
     var detailsSubview = UIView()
+    var composeTopBorderView = UIView()
     var commentsSubview = UIView()
+    var composeBottomBorderView = UIView()
     var commentComposerSubiew = UIView()
 
     var abroadDetailedStatus: AbroadDetailedStatus? {
@@ -33,8 +36,10 @@ class AbroadStatusViewController: NLFNucleusViewController {
     required init(coder aDecoder: NSCoder) {
         self.abroadStatusDetailsVC = AbroadStatusDetailsViewController(coder: aDecoder)
         self.abroadCommentTableVC = AbroadCommentTableViewController(coder: aDecoder)
-        self.abroadCommentComposeVC = AbroadCommentComposeViewController(formCells: [NLFNucleusTextFieldFormCell(reuseIdentifier: "abroad.cell.textfield", placeHolderText: "Comment on this post", height: 50)])
+        self.abroadCommentComposeVC = AbroadCommentComposeViewController(formCells: [NLFNucleusComposeCommentFormCell(reuseIdentifier: "abroad.cell.textfield", placeHolderText: "Comment on this post", buttonText:"Comment", height: 50)])
         super.init(coder: aDecoder)
+        self.composeBottomBorderView.backgroundColor = kCommentComposerBorderColor
+        self.composeTopBorderView.backgroundColor = kCommentComposerBorderColor
     }
 
     override func viewDidLoad() {
@@ -43,18 +48,24 @@ class AbroadStatusViewController: NLFNucleusViewController {
 
     override func viewDidLayoutSubviews() {
         var height = self.abroadStatusDetailsVC.contentHeight()
+
         var offsetY = self.view.frame.origin.y + self.navigationController!.navigationBar.frame.height
-
         self.detailsSubview.frame = CGRectMake(self.view.frame.origin.x, offsetY, self.view.frame.width, height)
+        offsetY += height + kStatusDetailsVerticalSpacing
 
-        offsetY += height + 34
-        height = self.abroadCommentComposeVC.contentHeight() + 34
+        height = kCommentComposerBorderWidth
+        self.composeTopBorderView.frame = CGRectMake(self.view.frame.origin.x, offsetY, self.view.frame.width, height)
+        offsetY += height
 
+        height = self.abroadCommentComposeVC.contentHeight()
         self.commentComposerSubiew.frame = CGRectMake(self.view.frame.origin.x, offsetY, self.view.frame.width, height)
+        offsetY += height
 
-        offsetY += height + 2 * kCommentComposerBorderWidth
+        height = kCommentComposerBorderWidth
+        self.composeBottomBorderView.frame = CGRectMake(self.view.frame.origin.x, offsetY, self.view.frame.width, height)
+        offsetY += height
 
-        self.commentsSubview.frame = CGRectMake(self.view.frame.origin.x, offsetY, self.view.frame.width, self.view.frame.height - self.abroadStatusDetailsVC.contentHeight() - self.abroadCommentComposeVC.contentHeight())
+        self.commentsSubview.frame = CGRectMake(self.view.frame.origin.x, offsetY, self.view.frame.width, self.view.frame.height - offsetY)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -63,23 +74,16 @@ class AbroadStatusViewController: NLFNucleusViewController {
         self.detailsSubview.addSubview(self.abroadStatusDetailsVC.view)
         self.abroadStatusDetailsVC.didMoveToParentViewController(self)
 
-        let topBorder = CALayer()
-        topBorder.backgroundColor = kCommentComposerBorderColor.CGColor
-        topBorder.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, kCommentComposerBorderWidth)
-        self.commentComposerSubiew.layer.addSublayer(topBorder)
-
         self.view.addSubview(commentComposerSubiew)
         self.commentComposerSubiew.addSubview(self.abroadCommentComposeVC.view)
         self.abroadCommentComposeVC.didMoveToParentViewController(self)
 
-        let bottomBorder = CALayer()
-        bottomBorder.backgroundColor = kCommentComposerBorderColor.CGColor
-        bottomBorder.frame = CGRectMake(0.0, 0.0, self.view.frame.size.width, kCommentComposerBorderWidth)
-        self.commentsSubview.layer.addSublayer(bottomBorder)
-
         self.view.addSubview(commentsSubview)
         self.commentsSubview.addSubview(self.abroadCommentTableVC.view)
         self.abroadCommentTableVC.didMoveToParentViewController(self)
+
+        self.view.addSubview(composeTopBorderView)
+        self.view.addSubview(composeBottomBorderView)
     }
 
     func setup() {
