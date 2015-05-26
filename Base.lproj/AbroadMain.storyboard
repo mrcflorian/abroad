@@ -69,21 +69,7 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFe-lq-fq4">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <connections>
-                                    <segue destination="043-1U-VDb" kind="embed" identifier="messagesVC" id="IZb-4W-L5n"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="sFe-lq-fq4" secondAttribute="bottom" id="41P-DI-ZKF"/>
-                            <constraint firstItem="sFe-lq-fq4" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="KD0-f5-1xg"/>
-                            <constraint firstAttribute="centerX" secondItem="sFe-lq-fq4" secondAttribute="centerX" id="W0H-OS-4PD"/>
-                            <constraint firstItem="sFe-lq-fq4" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="cHt-Pb-zT2"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messages" image="messages" id="cPa-gy-q4n"/>
                 </viewController>
@@ -124,7 +110,7 @@
                 <tabBarController id="49e-Tb-3d3" customClass="AbroadTabBarController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Home" id="CzD-LX-fqv">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="xAm-F2-9Ah">
-                            <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <color key="tintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addPostButtonDidTap:" destination="49e-Tb-3d3" id="iix-P5-VxH"/>
                             </connections>
@@ -172,29 +158,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQV-Qe-uuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-315" y="-588.5"/>
-        </scene>
-        <!--Abroad Table View Controller-->
-        <scene sceneID="EhG-5N-JdJ">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="043-1U-VDb" customClass="AbroadTableViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                </viewController>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ksj-BS-966">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <prototypes>
-                        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sgp-eV-Fsc" customClass="AbroadUserCell" customModule="Abroad" customModuleProvider="target">
-                            <autoresizingMask key="autoresizingMask"/>
-                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sgp-eV-Fsc" id="gb7-sH-yJL">
-                                <autoresizingMask key="autoresizingMask"/>
-                            </tableViewCellContentView>
-                        </tableViewCell>
-                    </prototypes>
-                </tableView>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xDO-gb-8Y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1140.5" y="610"/>
         </scene>
     </scenes>
     <resources>
