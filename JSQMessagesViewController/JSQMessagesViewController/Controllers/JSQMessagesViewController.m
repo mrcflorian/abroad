@@ -654,9 +654,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)jsq_setToolbarBottomLayoutGuideConstant:(CGFloat)constant
 {
-    if (constant <= 0) {
-        constant += 50;
-    }
     self.toolbarBottomLayoutGuide.constant = constant;
     [self.view setNeedsUpdateConstraints];
     [self.view layoutIfNeeded];
