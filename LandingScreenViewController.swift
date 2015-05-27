@@ -71,8 +71,10 @@ class LandingScreenViewController: NLFNucleusViewController
         AbroadAPI.requestUser(notification.object as! String, completionHandler: { (user) -> Void in
             let tabBarController = self.initialViewController!.childViewControllers.first as! AbroadTabBarController
             let homeViewController = tabBarController.childViewControllers.first as! HomeScreenViewController
+            let messagesViewController = tabBarController.childViewControllers[1] as! MessagesScreenViewController
             self.currentUser = user
             homeViewController.user = user
+            messagesViewController.user = user
             tabBarController.user = user
             self.locationManager.startUpdatingLocation()
         })
