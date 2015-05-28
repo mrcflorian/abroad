@@ -47,13 +47,14 @@ class AbroadChatRoomViewController: JSQMessagesViewController {
             var senderUser: AbroadUser?
             var recipientUser: AbroadUser?
 
-
             if (recipient == self.currentUser.userID) {
                 recipientUser = self.currentUser
                 senderUser = self.otherUser
-            } else {
+            } else if (sender == self.currentUser.userID) {
                 recipientUser = self.otherUser
                 senderUser = self.currentUser
+            } else {
+                return;
             }
 
             let message = AbroadMessage(text: text, sender: senderUser, recipient: recipientUser, imageUrl: imageUrl)
@@ -62,12 +63,13 @@ class AbroadChatRoomViewController: JSQMessagesViewController {
         })
     }
 
-    func sendMessage(text: String!, sender: String!) {
+    func sendMessage(text: String!) {
         // *** STEP 3: ADD A MESSAGE TO FIREBASE
         messagesRef.childByAutoId().setValue([
             "text":text,
-            "sender":sender,
-            "imageUrl":senderImageUrl
+            "sender":self.currentUser.userID,
+            "recipient":self.otherUser.userID,
+            "imageUrl":self.senderImageUrl
             ])
     }
 
@@ -151,7 +153,7 @@ class AbroadChatRoomViewController: JSQMessagesViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, sender: String!, date: NSDate!) {
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
 
-        sendMessage(text, sender: sender)
+        sendMessage(text)
 
         finishSendingMessage()
     }
