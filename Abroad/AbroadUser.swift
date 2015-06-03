@@ -22,17 +22,17 @@ class AbroadUser: NSObject {
 
     init(jsonDictionary: NSDictionary)
     {
-        if (jsonDictionary["hkid"] != nil) {
-            userID = jsonDictionary["hkid"] as! String
+        if (jsonDictionary["user_id"] != nil) {
+            userID = jsonDictionary["user_id"] as! String
         }
         if (jsonDictionary["profile_picture"] != nil) {
             profileImageURL = jsonDictionary["profile_picture"] as! String
         }
-        if (jsonDictionary["first_name"] != nil) {
-            firstName = jsonDictionary["first_name"] as! String
+        if (jsonDictionary["firstname"] != nil) {
+            firstName = jsonDictionary["firstname"] as! String
         }
-        if (jsonDictionary["last_name"] != nil) {
-            lastName = jsonDictionary["last_name"] as! String
+        if (jsonDictionary["lastname"] != nil) {
+            lastName = jsonDictionary["lastname"] as! String
         }
     }
     

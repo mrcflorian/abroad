@@ -10,31 +10,16 @@ class AbroadPost: NSObject
 {
     var statusID: String
     var photoURL: String
+    var userID: String
     var title: String
-    var content: String
-    var categoryID: String
-    var subcategoryID: String
+    var createdAt: String
 
     init(jsonDictionary: NSDictionary)
     {
-        statusID = jsonDictionary["hkid"] as! String
-        photoURL = jsonDictionary["photo"] as! String
-        title = jsonDictionary["title"] as! String
-        content = jsonDictionary["content"] as! String
-        categoryID = jsonDictionary["category_id"] as! String
-        subcategoryID = jsonDictionary["subcategory_id"] as! String
-    }
-
-    func youtubeVideoID() -> String
-    {
-        var query = self.content.componentsSeparatedByString("?")[1]
-        var pairs = query.componentsSeparatedByString("&")
-        for pair in pairs {
-            var kv = pair.componentsSeparatedByString("=")
-            if (kv[0] == "v") {
-                return kv[1]
-            }
-        }
-        return ""
+        statusID = jsonDictionary["status_id"] as! String
+        userID = jsonDictionary["user_id"] as! String
+        photoURL = jsonDictionary["image_url"] as! String
+        title = jsonDictionary["status"] as! String
+        createdAt = jsonDictionary["created_at"] as! String
     }
 }

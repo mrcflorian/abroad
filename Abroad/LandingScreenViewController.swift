@@ -68,7 +68,7 @@ class LandingScreenViewController: NLFNucleusViewController
         self.goToHomeScreen()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateUserLocation:", name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)
 
-        AbroadAPI.requestUser(notification.object as! String, completionHandler: { (user) -> Void in
+        AbroadAPI.updateUser(notification.object as? Dictionary<String, String>, completionHandler: { (user) -> Void in
             let tabBarController = self.initialViewController!.childViewControllers.first as! AbroadTabBarController
             let homeViewController = tabBarController.childViewControllers.first as! HomeScreenViewController
             let messagesViewController = tabBarController.childViewControllers[1] as! MessagesScreenViewController
@@ -76,7 +76,7 @@ class LandingScreenViewController: NLFNucleusViewController
             homeViewController.user = user
             messagesViewController.user = user
             tabBarController.user = user
-            self.locationManager.startUpdatingLocation()
+            //self.locationManager.startUpdatingLocation()
         })
     }
 

@@ -25,14 +25,13 @@ class AbroadAPI: NSObject {
         }
     }
 
-    class func requestUser(email: String, completionHandler: ((AbroadUser) -> Void)?)
+    class func updateUser(params: Dictionary <String, String>?, completionHandler: ((AbroadUser) -> Void)?)
     {
-        let params = ["email":email]
-        let request = NLFNucleusAPIRequest(params:params, path:"user.php")
+        let request = NLFNucleusAPIRequest(params: params, path:"user/update")
         NLFNucleusAPI.request(request) {(data, response, error) in
             if (completionHandler != nil) {
-                var songsList = Array<AbroadPost>()
-                var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary
+                var errorTmp: NSError?
+                var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &errorTmp) as? NSDictionary
                 if (jsonDictionary != nil) {
                     completionHandler!(AbroadUser(jsonDictionary: jsonDictionary!))
                 }
@@ -42,7 +41,7 @@ class AbroadAPI: NSObject {
 
     class func createNewsFeedStream(user: AbroadUser) -> NLFNucleusStream
     {
-        let request = NLFNucleusAPIRequest(params:["user_id":user.userID], path:"likes.php")
+        let request = NLFNucleusAPIRequest(params:["user_id":user.userID], path:"newsfeed")
         return NLFNucleusStream(apiRequest: request, jsonDecoder: AbroadPostJSONDecoder())
     }
 

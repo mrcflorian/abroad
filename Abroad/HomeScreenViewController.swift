@@ -21,7 +21,12 @@ class HomeScreenViewController: NLFNucleusViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "newsFeedVCSegue") {
-            newsFeedVC = segue.destinationViewController as? AbroadTableViewController
+            if (newsFeedVC == nil && user != nil) {
+                newsFeedVC = segue.destinationViewController as? AbroadTableViewController
+                self.newsFeedVC?.stream = AbroadAPI.createNewsFeedStream(user!)
+            } else {
+                newsFeedVC = segue.destinationViewController as? AbroadTableViewController
+            }
         }
     }
 }
