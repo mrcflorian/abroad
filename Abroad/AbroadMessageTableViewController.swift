@@ -16,6 +16,8 @@ class AbroadMessageTableViewController: NLFNucleusStreamifiedTableViewController
         }
     }
 
+    var tableViewHackingState: Int = 0
+
     var userRowAdapter = AbroadUserRowAdapter()
     var postRowAdapter = AbroadPostRowAdapter()
 
@@ -24,6 +26,22 @@ class AbroadMessageTableViewController: NLFNucleusStreamifiedTableViewController
         self.use(userRowAdapter, classRef: AbroadUser.self)
         self.use(postRowAdapter, classRef: AbroadPost.self)
         self.tableView.separatorColor = UIColor.clearColor()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        switch tableViewHackingState {
+        case 0:
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + 70, self.tableView.frame.width, self.tableView.frame.height)
+            tableViewHackingState = 1
+            break
+        case 1:
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - 70, self.tableView.frame.width, self.tableView.frame.height)
+            tableViewHackingState = 2
+            break
+        default:
+            tableViewHackingState = 3
+        }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

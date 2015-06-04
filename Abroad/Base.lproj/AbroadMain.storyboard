@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbz-ei-wpU">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <connections>
                                     <segue destination="tOh-3H-kx0" kind="embed" identifier="presentMessageTableVC" id="ll8-ML-qqc"/>
                                 </connections>
@@ -82,7 +82,7 @@
                             <constraint firstAttribute="width" secondItem="Bbz-ei-wpU" secondAttribute="width" id="gKS-HY-Sdh"/>
                             <constraint firstAttribute="centerX" secondItem="Bbz-ei-wpU" secondAttribute="centerX" id="mOo-DZ-d34"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Bbz-ei-wpU" secondAttribute="bottom" id="mcQ-fb-Irk"/>
-                            <constraint firstItem="Bbz-ei-wpU" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="zu0-X3-2fs"/>
+                            <constraint firstItem="Bbz-ei-wpU" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="topMargin" id="uyb-yC-X9N"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messages" image="messages" id="cPa-gy-q4n"/>
@@ -179,19 +179,6 @@
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="tOh-3H-kx0" customClass="AbroadMessageTableViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                 </viewController>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lnA-LB-Z3M">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <prototypes>
-                        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RfL-aK-V32" customClass="AbroadPostCell" customModule="Abroad" customModuleProvider="target">
-                            <autoresizingMask key="autoresizingMask"/>
-                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RfL-aK-V32" id="rVm-zC-rz5">
-                                <autoresizingMask key="autoresizingMask"/>
-                            </tableViewCellContentView>
-                        </tableViewCell>
-                    </prototypes>
-                </tableView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xl-vb-RqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1148" y="520.5"/>

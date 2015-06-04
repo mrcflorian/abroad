@@ -33,7 +33,6 @@ class AbroadCommentCell: UITableViewCell
 
         self.addSubview(self.commentImageView)
         self.addSubview(self.commentTextView)
-        self.setNeedsLayout()
     }
 
     required init(coder aDecoder: NSCoder)

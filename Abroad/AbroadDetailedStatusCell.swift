@@ -59,7 +59,6 @@ class AbroadDetailedStatusCell: UITableViewCell
         //self.actionsContainer.backgroundColor = kActionsContainerBackgroundColor
 
         //self.actionsContainer.addSubview(self.likeButton)
-        self.setNeedsLayout()
     }
 
     required init(coder aDecoder: NSCoder) {

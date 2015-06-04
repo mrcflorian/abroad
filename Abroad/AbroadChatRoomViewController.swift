@@ -47,10 +47,10 @@ class AbroadChatRoomViewController: JSQMessagesViewController {
             var senderUser: AbroadUser?
             var recipientUser: AbroadUser?
 
-            if (recipient == self.currentUser.userID) {
+            if (recipient == self.currentUser.userID && sender == self.otherUser.userID) {
                 recipientUser = self.currentUser
                 senderUser = self.otherUser
-            } else if (sender == self.currentUser.userID) {
+            } else if (sender == self.currentUser.userID && recipient == self.otherUser.userID) {
                 recipientUser = self.otherUser
                 senderUser = self.currentUser
             } else {
