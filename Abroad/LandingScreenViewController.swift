@@ -58,14 +58,14 @@ class LandingScreenViewController: NLFNucleusViewController
 
     func goToHomeScreen()
     {
-        let storyboard = UIStoryboard(name:"AbroadMain", bundle:nil)
-        initialViewController = storyboard.instantiateInitialViewController() as? UIViewController
-        self.presentViewController(initialViewController!, animated:true, completion:nil)
+        self.presentViewController(self.initialViewController!, animated:true, completion:nil)
     }
 
     func didFetchFacebookUser(notification: NSNotification)
     {
-        self.goToHomeScreen()
+        let storyboard = UIStoryboard(name:"AbroadMain", bundle:nil)
+        self.initialViewController = storyboard.instantiateInitialViewController() as? UIViewController
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didUpdateUserLocation:", name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)
 
         AbroadAPI.updateUser(notification.object as? Dictionary<String, String>, completionHandler: { (user) -> Void in
@@ -76,7 +76,8 @@ class LandingScreenViewController: NLFNucleusViewController
             homeViewController.user = user
             messagesViewController.user = user
             tabBarController.user = user
-            //self.locationManager.startUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
+            self.goToHomeScreen()
         })
     }
 

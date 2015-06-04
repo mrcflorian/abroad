@@ -6,12 +6,13 @@
 //  Copyright (c) 2015 Florian Marcu. All rights reserved.
 //
 
-import UIKit
+import NucleusFramework
 
-class AbroadComment: NSObject {
+class AbroadComment: NSObject, NLFNucleusStreamableOject {
     var userID: String = ""
     var text: String = ""
     var imageURL: String = ""
+    var createdAt: String = ""
 
     init(facebookID: String)
     {
@@ -20,14 +21,21 @@ class AbroadComment: NSObject {
 
     init(jsonDictionary: NSDictionary)
     {
-        if (jsonDictionary["hkid"] != nil) {
-            userID = jsonDictionary["hkid"] as! String
+        if (jsonDictionary["user_id"] != nil) {
+            userID = jsonDictionary["user_id"] as! String
         }
-        if (jsonDictionary["title"] != nil) {
-            text = jsonDictionary["title"] as! String
+        if (jsonDictionary["text"] != nil) {
+            text = jsonDictionary["text"] as! String
         }
-        if (jsonDictionary["content"] != nil) {
-            imageURL = jsonDictionary["content"] as! String
+        if (jsonDictionary["image_url"] != nil) {
+            text = jsonDictionary["image_url"] as! String
         }
+        if (jsonDictionary["created_at"] != nil) {
+            imageURL = jsonDictionary["created_at"] as! String
+        }
+    }
+
+    func getId() -> String {
+        return userID + createdAt
     }
 }

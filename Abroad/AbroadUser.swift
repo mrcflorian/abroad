@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Florian Marcu. All rights reserved.
 //
 
-class AbroadUser: NSObject {
+import NucleusFramework
+
+class AbroadUser: NSObject, NLFNucleusStreamableOject {
     var userID: String = ""
     var profileImageURL: String = ""
     var firstName: String = ""
@@ -34,11 +36,21 @@ class AbroadUser: NSObject {
         if (jsonDictionary["lastname"] != nil) {
             lastName = jsonDictionary["lastname"] as! String
         }
+        if (jsonDictionary["latitude"] != nil) {
+            latitude = jsonDictionary["latitude"] as? String
+        }
+        if (jsonDictionary["longitude"] != nil) {
+            longitude = jsonDictionary["longitude"] as? String
+        }
     }
-    
+
     func fullName() -> String
     {
         return firstName + " " + lastName
+    }
+
+    func getId() -> String {
+        return self.userID
     }
 
     class func abroadID(facebookID: String!) -> String

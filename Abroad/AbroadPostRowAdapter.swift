@@ -25,6 +25,7 @@ class AbroadPostRowAdapter: NLFTableRowAdapterProtocol
             cell?.postTextView.text = abroadSong.title
             cell?.postTextView.sizeToFit()
             cell?.postImageView.URLString = abroadSong.photoURL
+            cell!.setNeedsLayout()
         }
         return cell!
     }

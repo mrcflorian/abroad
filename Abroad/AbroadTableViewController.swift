@@ -19,6 +19,7 @@ class AbroadTableViewController: NLFNucleusStreamifiedTableViewController
         self.use(userRowAdapter, classRef: AbroadUser.self)
         self.use(postRowAdapter, classRef: AbroadPost.self)
         self.tableView.separatorColor = UIColor.clearColor()
+        self.hasPullToRefreshSupport = true
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

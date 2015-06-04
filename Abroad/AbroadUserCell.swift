@@ -27,6 +27,7 @@ class AbroadUserCell: UITableViewCell {
 
         self.addSubview(self.userImageView)
         self.addSubview(self.userTextView)
+        self.setNeedsLayout()
     }
 
     required init(coder aDecoder: NSCoder)

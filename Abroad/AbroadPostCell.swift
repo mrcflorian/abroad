@@ -32,6 +32,7 @@ class AbroadPostCell: UITableViewCell
         
         self.addSubview(self.postImageView)
         self.addSubview(self.postTextView)
+        self.setNeedsLayout()
     }
 
     required init(coder aDecoder: NSCoder)

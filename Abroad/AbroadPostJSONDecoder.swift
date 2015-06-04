@@ -10,7 +10,7 @@ import NucleusFramework
 
 class AbroadPostJSONDecoder: NLFNucleusJSONDecoder
 {
-    func decodeFromJSONDictionary(jsonDictionary: NSDictionary) -> AnyObject
+    func decodeFromJSONDictionary(jsonDictionary: NSDictionary) -> NLFNucleusStreamableOject
     {
         return AbroadPost(jsonDictionary: jsonDictionary)
     }

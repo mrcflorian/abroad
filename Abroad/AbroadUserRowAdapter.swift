@@ -23,6 +23,7 @@ class AbroadUserRowAdapter: NLFTableRowAdapterProtocol {
             cell?.userTextView.sizeToFit()
             cell?.userImageView.URLString = abroadUser.profileImageURL
         }
+        cell!.setNeedsLayout()
         return cell!
     }
 

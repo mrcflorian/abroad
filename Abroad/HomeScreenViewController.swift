@@ -15,6 +15,7 @@ class HomeScreenViewController: NLFNucleusViewController {
         didSet {
             if (user != nil) {
                 self.newsFeedVC?.stream = AbroadAPI.createNewsFeedStream(user!)
+                self.newsFeedVC?.stream?.loadMore()
             }
         }
     }
@@ -24,6 +25,7 @@ class HomeScreenViewController: NLFNucleusViewController {
             if (newsFeedVC == nil && user != nil) {
                 newsFeedVC = segue.destinationViewController as? AbroadTableViewController
                 self.newsFeedVC?.stream = AbroadAPI.createNewsFeedStream(user!)
+                self.newsFeedVC?.stream?.loadTop()
             } else {
                 newsFeedVC = segue.destinationViewController as? AbroadTableViewController
             }

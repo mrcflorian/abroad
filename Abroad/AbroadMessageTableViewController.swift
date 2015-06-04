@@ -11,12 +11,25 @@ import NucleusFramework
 class AbroadMessageTableViewController: NLFNucleusStreamifiedTableViewController {
     var user: AbroadUser? {
         didSet {
-            self.stream = AbroadAPI.createNewsFeedStream(self.user!)
+            self.stream = AbroadAPI.createMessagingUsersStream(self.user!)
+            self.stream?.loadMore()
         }
     }
 
+    var userRowAdapter = AbroadUserRowAdapter()
+    var postRowAdapter = AbroadPostRowAdapter()
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.use(userRowAdapter, classRef: AbroadUser.self)
+        self.use(postRowAdapter, classRef: AbroadPost.self)
+        self.tableView.separatorColor = UIColor.clearColor()
+    }
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let chatRoomVC = AbroadChatRoomViewController(currentUser: user!, otherUser: user!)
-        self.navigationController?.pushViewController(chatRoomVC, animated: true)
+        if let otherUser = self.objects()[indexPath.row] as? AbroadUser {
+            let chatRoomVC = AbroadChatRoomViewController(currentUser: user!, otherUser: otherUser)
+            self.navigationController?.pushViewController(chatRoomVC, animated: true)
+        }
     }
 }

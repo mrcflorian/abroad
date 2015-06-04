@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Florian Marcu. All rights reserved.
 //
 
-class AbroadPost: NSObject
+import NucleusFramework
+
+class AbroadPost: NSObject, NLFNucleusStreamableOject
 {
     var statusID: String
     var photoURL: String
@@ -21,5 +23,9 @@ class AbroadPost: NSObject
         photoURL = jsonDictionary["image_url"] as! String
         title = jsonDictionary["status"] as! String
         createdAt = jsonDictionary["created_at"] as! String
+    }
+
+    func getId() -> String {
+        return self.statusID
     }
 }

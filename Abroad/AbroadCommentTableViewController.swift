@@ -13,6 +13,7 @@ class AbroadCommentTableViewController: NLFNucleusStreamifiedTableViewController
     var abroadStatus: AbroadPost? {
         didSet {
             self.stream = AbroadAPI.createCommentsStream(self.abroadStatus!)
+            self.stream?.loadMore()
         }
     }
 
