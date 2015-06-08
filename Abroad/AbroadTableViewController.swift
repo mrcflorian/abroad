@@ -50,11 +50,11 @@ class AbroadTableViewController: NLFNucleusStreamifiedTableViewController
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showStatusDetailsVCSegue") {
+            let tabBarVC = (self.navigationController!.childViewControllers.first) as! AbroadTabBarController
             let statusVC = segue.destinationViewController as? AbroadStatusViewController
             let abroadStatus = (sender as! AbroadTableViewController).lastSelectedObject as! AbroadPost
-            let abroadUser = AbroadUser(facebookID: "sdsa")
-            abroadUser.profileImageURL = abroadStatus.photoURL
-            statusVC!.abroadDetailedStatus = AbroadDetailedStatus(abroadUser: abroadUser, abroadStatus: abroadStatus)
+            let abroadUser = tabBarVC.user
+            statusVC!.abroadDetailedStatus = AbroadDetailedStatus(abroadUser: abroadUser!, abroadStatus: abroadStatus)
             statusVC!.navigationItem.title = abroadStatus.title
         }
     }

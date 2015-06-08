@@ -59,13 +59,24 @@ class AbroadAPI: NSObject {
 
     class func createCommentsStream(status: AbroadPost) -> NLFNucleusStream
     {
-        let request = NLFNucleusAPIRequest(params:["user_id":"99100000181006895"], path:"likes.php")
+        let request = NLFNucleusAPIRequest(params:["status_id":status.statusID], path:"comments")
         return NLFNucleusStream(apiRequest: request, jsonDecoder: AbroadCommentJSONDecoder())
     }
 
     class func addStatus(userID: String, textValue: String, completionHandler: ((AbroadPost) -> Void)?) {
         let params = ["user_id":userID, "status":textValue]
         let request = NLFNucleusAPIRequest(params:params, path:"addStatus")
+        NLFNucleusAPI.request(request) {(data, response, error) in
+            if completionHandler != nil {
+                var abroadPost = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! AbroadPost
+                completionHandler!(abroadPost)
+            }
+        }
+    }
+
+    class func addComment(userID: String, statusID: String, textValue: String, completionHandler: ((AbroadPost) -> Void)?) {
+        let params = ["user_id":userID, "status_id":statusID, "comment":textValue]
+        let request = NLFNucleusAPIRequest(params:params, path:"addComment")
         NLFNucleusAPI.request(request) {(data, response, error) in
             if completionHandler != nil {
                 var abroadPost = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! AbroadPost

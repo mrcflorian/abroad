@@ -9,11 +9,13 @@
 import NucleusFramework
 
 class AbroadCommentComposeViewController: NLFNucleusFormTableViewController {
+    var abroadDetailedStatus: AbroadDetailedStatus?
 
     override init(formCells: [NLFNucleusFormTableViewCell]) {
         super.init(formCells: formCells)
         self.tableView.tableHeaderView = UIView(frame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, 0.01))
         self.automaticallyAdjustsScrollViewInsets = false
+        (self.cellsArray!.first as! NLFNucleusComposeCommentFormCell).addTarget(self, postingAction: "didTapCommentButton:")
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -28,4 +30,10 @@ class AbroadCommentComposeViewController: NLFNucleusFormTableViewController {
         self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
     }
 
+    func didTapCommentButton(sender: AnyObject) {
+        let statusText = (self.cellsArray!.first as! NLFNucleusComposeCommentFormCell).textValue()
+        if (count(statusText) > 0 && self.abroadDetailedStatus != nil) {
+            AbroadAPI.addComment(self.abroadDetailedStatus!.abroadUser.userID, statusID: self.abroadDetailedStatus!.abroadStatus.statusID, textValue: statusText, completionHandler: nil)
+        }
+    }
 }

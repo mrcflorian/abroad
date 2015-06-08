@@ -89,9 +89,9 @@ class AbroadStatusViewController: NLFNucleusViewController {
     func setup() {
         self.abroadStatusDetailsVC.abroadDetailedStatus = self.abroadDetailedStatus
         self.abroadCommentTableVC.abroadStatus = self.abroadDetailedStatus?.abroadStatus
+        self.abroadCommentComposeVC.abroadDetailedStatus = self.abroadDetailedStatus
         self.addChildViewController(self.abroadStatusDetailsVC)
         self.addChildViewController(self.abroadCommentComposeVC)
         self.addChildViewController(self.abroadCommentTableVC)
     }
-
 }
