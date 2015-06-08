@@ -61,6 +61,7 @@
 		17C4C1641B1335F70091D9B6 /* AbroadStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4C1631B1335F70091D9B6 /* AbroadStatusViewController.swift */; };
 		17C4C1661B136D340091D9B6 /* AbroadCommentComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4C1651B136D340091D9B6 /* AbroadCommentComposeViewController.swift */; };
 		17CFF4121B20C82E006375CE /* AbroadUserJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CFF4111B20C82E006375CE /* AbroadUserJSONDecoder.swift */; };
+		17DB51D01B26285700F90C37 /* ProfileScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DB51CF1B26285700F90C37 /* ProfileScreenViewController.swift */; };
 		17EAE6C61B151E39004C125B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 17EAE6581B151E39004C125B /* .gitignore */; };
 		17EAE6C71B151E39004C125B /* jsq_message_chat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EAE6591B151E39004C125B /* jsq_message_chat_icon.png */; };
 		17EAE6C81B151E39004C125B /* jsq_messages_banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 17EAE65A1B151E39004C125B /* jsq_messages_banner.png */; };
@@ -232,6 +233,7 @@
 		17C4C1631B1335F70091D9B6 /* AbroadStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbroadStatusViewController.swift; sourceTree = "<group>"; };
 		17C4C1651B136D340091D9B6 /* AbroadCommentComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbroadCommentComposeViewController.swift; sourceTree = "<group>"; };
 		17CFF4111B20C82E006375CE /* AbroadUserJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbroadUserJSONDecoder.swift; sourceTree = "<group>"; };
+		17DB51CF1B26285700F90C37 /* ProfileScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewController.swift; sourceTree = "<group>"; };
 		17EAE6581B151E39004C125B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		17EAE6591B151E39004C125B /* jsq_message_chat_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jsq_message_chat_icon.png; sourceTree = "<group>"; };
 		17EAE65A1B151E39004C125B /* jsq_messages_banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jsq_messages_banner.png; sourceTree = "<group>"; };
@@ -398,7 +400,9 @@
 				17A02F041AD9BE0B00D13B2F /* AbroadPlatform */,
 				178481D01B0A996C002D1B4A /* AbroadUI */,
 				177D6EE21AD5F2D40002CC42 /* AppDelegate.swift */,
+				178481D11B0A9A99002D1B4A /* AbroadTableViewController.swift */,
 				177D6EE41AD5F2D40002CC42 /* HomeScreenViewController.swift */,
+				17DB51CF1B26285700F90C37 /* ProfileScreenViewController.swift */,
 				177D6EE61AD5F2D40002CC42 /* MessagesScreenViewController.swift */,
 				177D6EE81AD5F2D40002CC42 /* AbroadMain.storyboard */,
 				178481CA1B0A9151002D1B4A /* AbroadLanding.storyboard */,
@@ -483,7 +487,6 @@
 			children = (
 				178481CD1B0A9187002D1B4A /* API */,
 				17A02F071AD9BEBB00D13B2F /* Models */,
-				178481D11B0A9A99002D1B4A /* AbroadTableViewController.swift */,
 				17A02F0E1AD9D10100D13B2F /* FacebookAPIManager.swift */,
 			);
 			name = AbroadPlatform;
@@ -962,6 +965,7 @@
 				178481D61B0BE480002D1B4A /* AbroadTabBarController.swift in Sources */,
 				17EAE6E41B151E39004C125B /* UIColor+JSQMessages.m in Sources */,
 				17EAE6E31B151E39004C125B /* NSString+JSQMessages.m in Sources */,
+				17DB51D01B26285700F90C37 /* ProfileScreenViewController.swift in Sources */,
 				17EAE6E81B151E39004C125B /* JSQMessagesViewController.m in Sources */,
 				17EAE6F11B151E39004C125B /* JSQMessage.m in Sources */,
 				17EAE6E51B151E39004C125B /* UIImage+JSQMessages.m in Sources */,

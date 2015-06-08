@@ -22,6 +22,27 @@ class AbroadTableViewController: NLFNucleusStreamifiedTableViewController
         self.hasPullToRefreshSupport = true
     }
 
+    var shouldBeHacked: Bool = false
+    var tableViewHackingState: Int = 0
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if (shouldBeHacked) {
+            switch tableViewHackingState {
+            case 0:
+                self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y + 70, self.tableView.frame.width, self.tableView.frame.height)
+                tableViewHackingState = 1
+                break
+            case 1:
+                self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y - 70, self.tableView.frame.width, self.tableView.frame.height)
+                tableViewHackingState = 2
+                break
+            default:
+                tableViewHackingState = 3
+            }
+        }
+    }
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.lastSelectedObject = self.objects()[indexPath.row]
         self.performSegueWithIdentifier("showStatusDetailsVCSegue", sender: self)

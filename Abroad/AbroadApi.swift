@@ -51,6 +51,12 @@ class AbroadAPI: NSObject {
         return NLFNucleusStream(apiRequest: request, jsonDecoder: AbroadUserJSONDecoder())
     }
 
+    class func createProfileStream(user: AbroadUser) -> NLFNucleusStream
+    {
+        let request = NLFNucleusAPIRequest(params:["user_id":user.userID], path:"profile")
+        return NLFNucleusStream(apiRequest: request, jsonDecoder: AbroadPostJSONDecoder())
+    }
+
     class func createCommentsStream(status: AbroadPost) -> NLFNucleusStream
     {
         let request = NLFNucleusAPIRequest(params:["user_id":"99100000181006895"], path:"likes.php")

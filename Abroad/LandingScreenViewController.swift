@@ -72,9 +72,11 @@ class LandingScreenViewController: NLFNucleusViewController
             let tabBarController = self.initialViewController!.childViewControllers.first as! AbroadTabBarController
             let homeViewController = tabBarController.childViewControllers.first as! HomeScreenViewController
             let messagesViewController = tabBarController.childViewControllers[1] as! MessagesScreenViewController
+            let profileViewController = tabBarController.childViewControllers[2] as! ProfileScreenViewController
             self.currentUser = user
             homeViewController.user = user
             messagesViewController.user = user
+            profileViewController.user = user
             tabBarController.user = user
             self.locationManager.startUpdatingLocation()
             self.goToHomeScreen()

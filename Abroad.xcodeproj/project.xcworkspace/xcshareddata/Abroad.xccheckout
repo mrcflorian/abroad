@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F4CB60B6-7367-4E02-B3D1-188C1AB07D81</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Abroad</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>6C66E71E5C5FB415B0BDAB2B00FA74EFE9FD39C0</key>
@@ -16,7 +16,7 @@
 		<string>https://github.com/mrcflorian/nucleus.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Abroad.xcodeproj/project.xcworkspace</string>
+	<string>Abroad.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6C66E71E5C5FB415B0BDAB2B00FA74EFE9FD39C0</key>

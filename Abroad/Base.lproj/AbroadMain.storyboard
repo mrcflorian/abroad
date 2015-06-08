@@ -94,7 +94,7 @@
         <!--Me-->
         <scene sceneID="b3D-Wk-1np">
             <objects>
-                <viewController id="d4O-nh-qIC" sceneMemberID="viewController">
+                <viewController id="d4O-nh-qIC" customClass="ProfileScreenViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="svv-wn-ra2"/>
                         <viewControllerLayoutGuide type="bottom" id="ywm-aC-QEJ"/>
@@ -102,7 +102,21 @@
                     <view key="view" contentMode="scaleToFill" id="0FM-Ig-exC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qk-x4-XXZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <connections>
+                                    <segue destination="UXP-fq-BGJ" kind="embed" identifier="presentProfileVCSegue" id="N4f-9w-G9o"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9qk-x4-XXZ" firstAttribute="top" secondItem="0FM-Ig-exC" secondAttribute="topMargin" id="4ln-ha-Ww7"/>
+                            <constraint firstAttribute="centerX" secondItem="9qk-x4-XXZ" secondAttribute="centerX" id="Fhp-zB-mH5"/>
+                            <constraint firstAttribute="width" secondItem="9qk-x4-XXZ" secondAttribute="width" id="ecH-go-SCL"/>
+                            <constraint firstItem="ywm-aC-QEJ" firstAttribute="top" secondItem="9qk-x4-XXZ" secondAttribute="bottom" id="ozb-2a-pTO"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="me" id="FRq-8w-qLU"/>
                 </viewController>
@@ -116,7 +130,7 @@
                 <viewController id="nhW-kN-iwr" customClass="AbroadStatusViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nV9-V5-IqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-976" y="-530"/>
+            <point key="canvasLocation" x="-1080" y="43.5"/>
         </scene>
         <!--Home-->
         <scene sceneID="yl2-sM-qoP">
@@ -182,6 +196,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xl-vb-RqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1148" y="520.5"/>
+        </scene>
+        <!--Abroad Status View Controller-->
+        <scene sceneID="PFM-jQ-Ifd">
+            <objects>
+                <viewController id="lOo-8c-erl" customClass="AbroadStatusViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyC-ai-E6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2150" y="1222.5"/>
+        </scene>
+        <!--Abroad Table View Controller-->
+        <scene sceneID="BdH-fd-4ut">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="UXP-fq-BGJ" customClass="AbroadTableViewController" customModule="Abroad" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <connections>
+                        <segue destination="lOo-8c-erl" kind="show" identifier="showStatusDetailsVCSegue" id="C4p-ce-thV"/>
+                    </connections>
+                </viewController>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ynC-t1-J8O">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <prototypes>
+                        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5An-U7-ho0" customClass="AbroadPostCell" customModule="Abroad" customModuleProvider="target">
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5An-U7-ho0" id="ncE-KT-Icu">
+                                <autoresizingMask key="autoresizingMask"/>
+                            </tableViewCellContentView>
+                        </tableViewCell>
+                    </prototypes>
+                </tableView>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRz-iW-Xlz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1221" y="1319.5"/>
         </scene>
     </scenes>
     <resources>
