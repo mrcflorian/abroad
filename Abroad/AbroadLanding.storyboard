@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sG1-A9-bur">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sG1-A9-bur">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Landing Screen View Controller-->
@@ -16,25 +16,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-A9-S4V">
-                                <rect key="frame" x="228" y="225" width="143" height="30"/>
-                                <state key="normal" title="Login with Facebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-A9-S4V">
+                                <rect key="frame" x="214" y="264" width="173" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                <state key="normal" title="Connect with Facebook">
+                                    <color key="titleColor" red="0.137958155" green="0.4877211514" blue="0.81883769129999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapLoginButton:" destination="sG1-A9-bur" eventType="touchUpInside" id="zjl-Ju-DeY"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TaL-d4-U82">
-                                <rect key="frame" x="289" y="230" width="20" height="20"/>
+                                <rect key="frame" x="289" y="260" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get in touch with your people!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPy-PK-bSJ">
+                                <rect key="frame" x="183" y="137" width="233" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abroad" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="IIH-kY-1UG">
+                                <rect key="frame" x="240" y="96" width="121" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Florian Marcu. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="CYI-WL-PF4">
+                                <rect key="frame" x="173" y="568" width="253" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.137958155" green="0.4877211514" blue="0.81883769129999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="HVA-Lj-SkD" firstAttribute="top" secondItem="CYI-WL-PF4" secondAttribute="bottom" constant="20" id="2KD-FO-Owc"/>
                             <constraint firstAttribute="centerX" secondItem="3eb-A9-S4V" secondAttribute="centerX" id="DSo-ig-rmq"/>
+                            <constraint firstAttribute="centerX" secondItem="KPy-PK-bSJ" secondAttribute="centerX" constant="0.5" id="FtJ-gL-nC9"/>
                             <constraint firstAttribute="centerX" secondItem="TaL-d4-U82" secondAttribute="centerX" constant="1" id="Gp2-Kv-Elg"/>
-                            <constraint firstAttribute="centerY" secondItem="3eb-A9-S4V" secondAttribute="centerY" constant="60" id="cyQ-xA-uHF"/>
-                            <constraint firstAttribute="centerY" secondItem="TaL-d4-U82" secondAttribute="centerY" constant="60" id="hxL-zv-jzM"/>
+                            <constraint firstAttribute="centerX" secondItem="CYI-WL-PF4" secondAttribute="centerX" id="RsT-Hp-JX9"/>
+                            <constraint firstAttribute="centerY" secondItem="3eb-A9-S4V" secondAttribute="centerY" constant="20" id="cyQ-xA-uHF"/>
+                            <constraint firstItem="IIH-kY-1UG" firstAttribute="top" secondItem="caV-sy-C1r" secondAttribute="bottom" constant="76" id="dlj-3J-vd7"/>
+                            <constraint firstAttribute="centerY" secondItem="TaL-d4-U82" secondAttribute="centerY" constant="30" id="hxL-zv-jzM"/>
+                            <constraint firstItem="KPy-PK-bSJ" firstAttribute="top" secondItem="IIH-kY-1UG" secondAttribute="top" constant="41" id="vh3-pT-W3T"/>
+                            <constraint firstAttribute="centerX" secondItem="IIH-kY-1UG" secondAttribute="centerX" id="xMM-he-xUn"/>
                         </constraints>
                     </view>
                     <connections>

@@ -17,6 +17,12 @@ class LandingScreenViewController: NLFNucleusViewController
     private var initialViewController: UIViewController?
     private var currentUser: AbroadUser?
 
+    override func viewDidLoad() {
+        facebookLoginButton.layer.cornerRadius = 10
+        facebookLoginButton.clipsToBounds = true
+        facebookLoginButton.backgroundColor = UIColor.whiteColor()
+    }
+
     deinit
     {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kFacebookManagerDidFetchUserNotification, object: nil)
