@@ -85,7 +85,7 @@ class AbroadDetailedStatusCell: UITableViewCell
     }
 
     class func height() -> CGFloat {
-        return 2 * kDetailedStatusVerticalPadding + kDetailedStatusImageSize.height
+        return 2 * kDetailedStatusVerticalPadding + kDetailedStatusImageSize.height + 4 * kDetailedStatusVerticalPadding
     }
 
 }

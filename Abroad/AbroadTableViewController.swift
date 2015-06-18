@@ -55,7 +55,7 @@ class AbroadTableViewController: NLFNucleusStreamifiedTableViewController
             let abroadStatus = (sender as! AbroadTableViewController).lastSelectedObject as! AbroadPost
             let abroadUser = tabBarVC.user
             statusVC!.abroadDetailedStatus = AbroadDetailedStatus(abroadUser: abroadUser!, abroadStatus: abroadStatus)
-            statusVC!.navigationItem.title = abroadStatus.title
+            statusVC!.navigationItem.title = "Status Details"
         }
     }
 }

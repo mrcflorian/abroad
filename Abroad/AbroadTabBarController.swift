@@ -41,7 +41,12 @@ class AbroadTabBarController: UITabBarController {
         let statusText = self.addStatusCellsArray.first?.textValue()
 
         if (statusText != nil && count(statusText!) > 0 && self.user != nil) {
-            AbroadAPI.addStatus(self.user!.userID, textValue: statusText!, completionHandler: nil)
+            AbroadAPI.addStatus(self.user!.userID, textValue: statusText!, completionHandler: {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.addStatusCellsArray.first?.resetValue()
+                    (self.childViewControllers.first as! HomeScreenViewController).newsFeedVC?.stream?.loadTop()
+                }
+            })
         }
         self.addStatusNavigationController?.dismissViewControllerAnimated(true, completion: nil)
     }

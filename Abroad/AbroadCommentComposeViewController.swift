@@ -31,9 +31,16 @@ class AbroadCommentComposeViewController: NLFNucleusFormTableViewController {
     }
 
     func didTapCommentButton(sender: AnyObject) {
-        let statusText = (self.cellsArray!.first as! NLFNucleusComposeCommentFormCell).textValue()
+        let textCell = (self.cellsArray!.first as! NLFNucleusComposeCommentFormCell)
+        let statusText = textCell.textValue()
         if (count(statusText) > 0 && self.abroadDetailedStatus != nil) {
-            AbroadAPI.addComment(self.abroadDetailedStatus!.abroadUser.userID, statusID: self.abroadDetailedStatus!.abroadStatus.statusID, textValue: statusText, completionHandler: nil)
+            AbroadAPI.addComment(self.abroadDetailedStatus!.abroadUser.userID, statusID: self.abroadDetailedStatus!.abroadStatus.statusID, textValue: statusText, completionHandler: {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let commentsListVC = (self.parentViewController as! AbroadStatusViewController).abroadCommentTableVC
+                    commentsListVC.update()
+                    textCell.resetValue()
+                }
+            })
         }
     }
 }

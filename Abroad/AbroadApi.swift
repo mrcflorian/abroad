@@ -63,24 +63,24 @@ class AbroadAPI: NSObject {
         return NLFNucleusStream(apiRequest: request, jsonDecoder: AbroadCommentJSONDecoder())
     }
 
-    class func addStatus(userID: String, textValue: String, completionHandler: ((AbroadPost) -> Void)?) {
+    class func addStatus(userID: String, textValue: String, completionHandler: (() -> Void)?) {
         let params = ["user_id":userID, "status":textValue]
         let request = NLFNucleusAPIRequest(params:params, path:"addStatus")
         NLFNucleusAPI.request(request) {(data, response, error) in
             if completionHandler != nil {
-                var abroadPost = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! AbroadPost
-                completionHandler!(abroadPost)
+                //var abroadPost = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! AbroadPost
+                completionHandler!()
             }
         }
     }
 
-    class func addComment(userID: String, statusID: String, textValue: String, completionHandler: ((AbroadPost) -> Void)?) {
+    class func addComment(userID: String, statusID: String, textValue: String, completionHandler: (() -> Void)?) {
         let params = ["user_id":userID, "status_id":statusID, "comment":textValue]
         let request = NLFNucleusAPIRequest(params:params, path:"addComment")
         NLFNucleusAPI.request(request) {(data, response, error) in
             if completionHandler != nil {
-                var abroadPost = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! AbroadPost
-                completionHandler!(abroadPost)
+                //var abroadPost = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! AbroadPost
+                completionHandler!()
             }
         }
     }

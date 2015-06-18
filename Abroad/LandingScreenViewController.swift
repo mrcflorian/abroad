@@ -93,7 +93,7 @@ class LandingScreenViewController: NLFNucleusViewController
     {
         if (notification.userInfo != nil) {
             let userInfo = notification.userInfo as! Dictionary<String, String>
-            // TODO: Send the coordinates to the server
+            // TODO: Send the coordinates to the server properly
             self.currentUser?.longitude = userInfo["longitude"]
             self.currentUser?.latitude = userInfo["latitude"]
             NSNotificationCenter.defaultCenter().removeObserver(self, name: kNLFNucleusLocationManagerDidUpdateLocation, object: nil)

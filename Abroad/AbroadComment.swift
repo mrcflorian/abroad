@@ -31,7 +31,7 @@ class AbroadComment: NSObject, NLFNucleusStreamableOject {
             text = jsonDictionary["image_url"] as! String
         }
         if (jsonDictionary["created_at"] != nil) {
-            imageURL = jsonDictionary["created_at"] as! String
+            imageURL = jsonDictionary["profile_picture"] as! String
         }
     }
 

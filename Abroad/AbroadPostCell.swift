@@ -8,8 +8,8 @@
 import NucleusFramework
 
 let kPostImageCornerRadius: CGFloat = 4.0
-let kPostImageSize: CGSize = CGSize(width: 40, height: 40)
-let kPostVerticalPadding: CGFloat = 5
+let kPostImageSize: CGSize = CGSize(width: 50, height: 50)
+let kPostVerticalPadding: CGFloat = 15
 let kPostHorizontalPadding: CGFloat = 10
 
 class AbroadPostCell: UITableViewCell
@@ -29,7 +29,10 @@ class AbroadPostCell: UITableViewCell
         self.postImageView.layer.cornerRadius = kPostImageCornerRadius
         self.postTextView.editable = false
         self.postTextView.selectable = false
-        
+        self.postTextView.clipsToBounds = true
+        self.postTextView.font = UIFont.systemFontOfSize(16, weight: 0.05)
+        self.postTextView.contentInset = UIEdgeInsetsMake(-10,0,0,0)
+
         self.addSubview(self.postImageView)
         self.addSubview(self.postTextView)
     }
@@ -44,10 +47,10 @@ class AbroadPostCell: UITableViewCell
         self.postImageView.frame = CGRectMake(frame.origin.x + kPostHorizontalPadding, frame.origin.y + kPostVerticalPadding, kPostImageSize.width, kPostImageSize.height)
         
         let width: CGFloat = frame.width - 3 * kPostHorizontalPadding - kPostImageSize.width
-        self.postTextView.frame = CGRectMake(frame.origin.x + kPostImageSize.width + 2 * kPostHorizontalPadding, frame.origin.y + kPostVerticalPadding, width, kPostImageSize.height)
+        self.postTextView.frame = CGRectMake(frame.origin.x + kPostImageSize.width + 2 * kPostHorizontalPadding, frame.origin.y + kPostVerticalPadding, width, self.postTextView.sizeThatFits(self.bounds.size).height)
     }
     
     class func height() -> CGFloat {
-        return 2 * kPostVerticalPadding + kPostImageSize.height
+        return 2 * kPostVerticalPadding + kPostImageSize.height + kPostHorizontalPadding
     }
 }

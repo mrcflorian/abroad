@@ -11,7 +11,7 @@ import QuartzCore
 import Foundation
 import UIKit
 
-let kCommentComposerBorderWidth: CGFloat = 1.0
+let kCommentComposerBorderWidth: CGFloat = 2.0
 let kCommentComposerBorderColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
 let kStatusDetailsVerticalSpacing: CGFloat = 20.0
 

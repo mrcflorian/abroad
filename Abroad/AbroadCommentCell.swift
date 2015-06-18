@@ -30,6 +30,7 @@ class AbroadCommentCell: UITableViewCell
         self.commentImageView.layer.cornerRadius = kPostImageCornerRadius
         self.commentTextView.editable = false
         self.commentTextView.selectable = false
+        self.commentTextView.font =  UIFont.systemFontOfSize(14, weight: 0.05)
 
         self.addSubview(self.commentImageView)
         self.addSubview(self.commentTextView)

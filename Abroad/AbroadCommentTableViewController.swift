@@ -24,6 +24,10 @@ class AbroadCommentTableViewController: NLFNucleusStreamifiedTableViewController
         self.automaticallyAdjustsScrollViewInsets = false
     }
 
+    func update() {
+        self.stream?.loadMore(batchSize: 50, forced: true)
+    }
+
     override func didMoveToParentViewController(parent: UIViewController?) {
         self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
     }
